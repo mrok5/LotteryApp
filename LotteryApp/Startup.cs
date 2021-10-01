@@ -29,6 +29,9 @@ namespace LotteryApp
             });
 
             services.AddDbContext<LotteryDbContext>();
+            services.AddScoped<IDrawRepository, DrawRepository>();
+            services.AddTransient<DrawSeeder>();
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

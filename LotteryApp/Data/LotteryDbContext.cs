@@ -16,13 +16,18 @@ namespace LotteryApp.Data
         {
             _config = config;
         }
-        public DbSet<DrawHistory> DrawHistories { get; set; }
+        public DbSet<DrawHistory> DrawHistory { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
 
             optionsBuilder.UseSqlServer(_config["ConnectionStrings:LotteryAppDbContext"]);
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

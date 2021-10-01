@@ -1,3 +1,4 @@
+using LotteryApp.Data;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
@@ -7,6 +8,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace LotteryApp
 {
@@ -14,7 +16,15 @@ namespace LotteryApp
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var host = CreateHostBuilder(args).Build();
+            RunSeeding(host);
+            host.Run();
+        }
+
+        private static void RunSeeding(IHost host)
+        {
+            var seeder = host.Services.GetService<DrawSeeder>();
+                seeder.Seed();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
