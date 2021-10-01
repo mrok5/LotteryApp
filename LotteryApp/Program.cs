@@ -17,14 +17,26 @@ namespace LotteryApp
         public static void Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build();
-            RunSeeding(host);
-            host.Run();
+
+            if (args.Length > 0 && args[0].ToLower() == "/seed")
+            {
+                RunSeeding(host);
+            }
+            else
+            {
+                host.Run();
+            }
         }
 
         private static void RunSeeding(IHost host)
         {
-            var seeder = host.Services.GetService<DrawSeeder>();
+            var scopeFactory = host.Services.GetService<IServiceScopeFactory>();
+
+            using (var scope = scopeFactory.CreateScope())
+            {
+                var seeder = scope.ServiceProvider.GetService<DrawSeeder>();
                 seeder.Seed();
+            }
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

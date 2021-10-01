@@ -26,15 +26,15 @@ namespace LotteryApp.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("datetime2");
-
                     b.Property<int>("Draw")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("DrawDateTime")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("Id");
 
-                    b.ToTable("DrawHistories");
+                    b.ToTable("DrawHistory");
                 });
 #pragma warning restore 612, 618
         }
