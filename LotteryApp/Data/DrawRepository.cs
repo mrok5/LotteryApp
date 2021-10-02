@@ -24,9 +24,17 @@ namespace LotteryApp.Data
             return _ctx.DrawHistory.OrderBy(x => x.DrawDateTime).ToList();
         }
 
-        public void SaveDraw(IEnumerable<DrawHistory> draws)
+        public bool SaveDraw(DrawHistory draw)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _ctx.DrawHistory.Add(draw);
+                return _ctx.SaveChanges() > 0;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

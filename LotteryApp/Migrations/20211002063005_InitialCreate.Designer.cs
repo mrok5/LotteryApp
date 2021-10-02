@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LotteryApp.Migrations
 {
     [DbContext(typeof(LotteryDbContext))]
-    [Migration("20211001193034_InitialCreate")]
+    [Migration("20211002063005_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,8 +28,8 @@ namespace LotteryApp.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Draw")
-                        .HasColumnType("int");
+                    b.Property<string>("Draw")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DrawDateTime")
                         .HasColumnType("datetime2");

@@ -62,11 +62,23 @@ namespace LotteryApp.Controllers
 
         [HttpPost]
         [Route("SaveDraw")]
-        public IActionResult SaveDraw(IEnumerable<DrawHistory> draws)
+        public IActionResult SaveDraw(string draw)
         {
-           _drawRepository.SaveDraw(draws);
+            var drawHistory = new DrawHistory()
+            {
+                DrawDateTime = DateTime.Now,
+                Draw = draw
+            };
 
-            return Ok();
+            if (_drawRepository.SaveDraw(drawHistory))
+            {
+                return Ok("The draw saved to database");
+            }
+            else
+            {
+                return BadRequest("Failed to save new draw");
+            }
+
         }
     }
 }

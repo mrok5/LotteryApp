@@ -10,6 +10,6 @@ namespace LotteryApp.Data
     {
         DrawHistory Get(int id);
         IEnumerable<DrawHistory> GetDrawHistory();
-        void SaveDraw(IEnumerable<DrawHistory> draws);
+        bool SaveDraw(DrawHistory draw);
     }
 }

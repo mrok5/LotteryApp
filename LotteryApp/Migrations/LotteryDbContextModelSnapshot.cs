@@ -26,8 +26,8 @@ namespace LotteryApp.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Draw")
-                        .HasColumnType("int");
+                    b.Property<string>("Draw")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DrawDateTime")
                         .HasColumnType("datetime2");
