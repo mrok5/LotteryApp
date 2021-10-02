@@ -11,5 +11,6 @@ namespace LotteryApp.Data
         DrawHistory Get(int id);
         IEnumerable<DrawHistory> GetDrawHistory();
         bool SaveDraw(DrawHistory draw);
+        int[] DrawMethod();
     }
 }

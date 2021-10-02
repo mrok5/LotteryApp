@@ -9,9 +9,31 @@ namespace LotteryApp.Data
     public class DrawRepository : IDrawRepository
     {
         private readonly LotteryDbContext _ctx;
+        private const int Min = 1;
+        private const int Max = 50;
+        private const int DrawNumber = 5;
         public DrawRepository(LotteryDbContext ctx)
         {
             _ctx = ctx;
+        }
+
+        public int[] DrawMethod()
+        {
+            var drawArray = new int[DrawNumber];
+
+            for (var i = 0; i < DrawNumber; i++)
+            {
+                var draw = new Random().Next(Min, Max);
+
+                while (drawArray.Contains(draw))
+                {
+                    draw = new Random().Next(Min, Max);
+                }
+
+                drawArray[i] = draw;
+            }
+
+            return drawArray;
         }
 
         public DrawHistory Get(int id)
