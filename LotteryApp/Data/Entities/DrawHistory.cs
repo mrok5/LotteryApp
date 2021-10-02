@@ -9,6 +9,6 @@ namespace LotteryApp.Data.Entities
     {
         public int Id { get; set; }
         public DateTime DrawDateTime { get; set; }
-        public int Draw{ get; set; }
+        public int[] Draw{ get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using LotteryApp.Data.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -27,7 +28,12 @@ namespace LotteryApp.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            var converter = new ValueConverter<int[], string>(v => string.Join(";", v),
+                v => v.Split(";", StringSplitOptions.RemoveEmptyEntries).Select(val => int.Parse(val)).ToArray());
+
+            modelBuilder.Entity<DrawHistory>().Property(e => e.Draw).HasConversion(converter);
             base.OnModelCreating(modelBuilder);
         }
+
     }
 }

@@ -12,6 +12,9 @@ namespace LotteryApp.Controllers
     public class DrawsController : Controller
     {
         private readonly IDrawRepository _drawRepository;
+        private const int Min = 1;
+        private const int Max = 50;
+        private const int DrawNumber = 5;
         public DrawsController(IDrawRepository drawRepository)
         {
             _drawRepository = drawRepository;
@@ -21,7 +24,7 @@ namespace LotteryApp.Controllers
         [Route("GetDraw")]
         public DrawHistory GetDraw(int id)
         {
-           return _drawRepository.Get(id); 
+            return _drawRepository.Get(id);
         }
 
         [HttpGet]
@@ -33,17 +36,37 @@ namespace LotteryApp.Controllers
 
         [HttpGet]
         [Route("NewDraw")]
-        public IEnumerable<DrawHistory> NewDraw()
+        public IActionResult NewDraw()
         {
-            return new List<DrawHistory>
+            return Ok(DrawMethod());
+        }
+
+        private static int[] DrawMethod()
+        {
+            var drawArray = new int[DrawNumber];
+
+            for (var i = 0; i < DrawNumber; i++)
             {
-                new DrawHistory
+                var draw = new Random().Next(Min, Max);
+
+                while (drawArray.Contains(draw))
                 {
-                    Id = 1,
-                    DrawDateTime = DateTime.Now,
-                    Draw = new Random().Next(50)
+                    draw = new Random().Next(Min, Max);
                 }
-            };
+
+                drawArray[i] = draw;
+            }
+
+            return drawArray;
+        }
+
+        [HttpPost]
+        [Route("SaveDraw")]
+        public IActionResult SaveDraw(IEnumerable<DrawHistory> draws)
+        {
+           _drawRepository.SaveDraw(draws);
+
+            return Ok();
         }
     }
 }
