@@ -1,23 +1,20 @@
 <h1 id="tableLabel">Draw History</h1>
 
-<p>This component demonstrates fetching data from the server.</p>
+<p *ngIf="!lottery"><em>Loading...</em></p>
 
-<p *ngIf="!drawHistory"><em>Loading...</em></p>
-
-<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="drawHistories">
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="lottery">
   <thead>
     <tr>
       <th>Id</th>
       <th>DateTime</th>
       <th>Draw</th>
-      <th>Summary</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let d of lottery.">
-      <td>{{ drawHistory.id }}</td>
-      <td>{{ drawHistory.drawDateTime}}</td>
-      <td>{{ drawHistory.draw }}</td>
+    <tr *ngFor="let element of lottery.drawHistory">
+      <td>{{ element.id }}</td>
+      <td>{{ element.drawDateTime | date:'medium'}}</td>
+      <td>{{ element.draw }}</td>
     </tr>
   </tbody>
 </table>

@@ -8,7 +8,7 @@ import { Lottery } from '../services/lottery.service';
 })
 export class DrawHistoryComponent implements OnInit {
 
-  constructor(private lottery: Lottery) {
+  constructor(public lottery: Lottery) {
   }
 
   ngOnInit(): void {

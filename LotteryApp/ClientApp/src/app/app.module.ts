@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { DrawHistoryComponent } from './draw-history/draw-history.component';
+import { Lottery } from './services/lottery.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { DrawHistoryComponent } from './draw-history/draw-history.component';
       { path: 'draw-history', component: DrawHistoryComponent },
     ])
   ],
-  providers: [],
+  providers: [Lottery],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
