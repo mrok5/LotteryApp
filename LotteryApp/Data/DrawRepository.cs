@@ -14,6 +14,14 @@ namespace LotteryApp.Data
             _ctx = ctx;
         }
 
-        public DrawHistory Get(int id) => _ctx.DrawHistory.Where(x => x.Id == id).FirstOrDefault();
+        public DrawHistory Get(int id)
+        {
+            return _ctx.DrawHistory.Where(x => x.Id == id).FirstOrDefault();
+        }
+
+        public IEnumerable<DrawHistory> GetDrawHistory()
+        {
+            return _ctx.DrawHistory.OrderBy(x => x.DrawDateTime).ToList();
+        }
     }
 }

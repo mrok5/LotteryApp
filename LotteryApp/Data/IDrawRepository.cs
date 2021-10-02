@@ -9,5 +9,6 @@ namespace LotteryApp.Data
     public interface IDrawRepository
     {
         DrawHistory Get(int id);
+        IEnumerable<DrawHistory> GetDrawHistory();
     }
 }

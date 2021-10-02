@@ -25,6 +25,13 @@ namespace LotteryApp.Controllers
         }
 
         [HttpGet]
+        [Route("GetDrawHistory")]
+        public IEnumerable<DrawHistory> GetDrawHistory()
+        {
+            return _drawRepository.GetDrawHistory();
+        }
+
+        [HttpGet]
         [Route("NewDraw")]
         public IEnumerable<DrawHistory> NewDraw()
         {
