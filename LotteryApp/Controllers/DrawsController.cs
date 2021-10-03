@@ -1,5 +1,6 @@
 ﻿using LotteryApp.Data;
 using LotteryApp.Data.Entities;
+using LotteryApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -65,13 +66,8 @@ namespace LotteryApp.Controllers
 
         [HttpPost]
         [Route("SaveDraw")]
-        public IActionResult SaveDraw(string draw)
+        public IActionResult SaveDraw([FromBody] DrawHistory drawHistory)
         {
-            var drawHistory = new DrawHistory()
-            {
-                DrawDateTime = DateTime.Now,
-                Draw = draw
-            };
 
             if (_drawRepository.SaveDraw(drawHistory))
             {
