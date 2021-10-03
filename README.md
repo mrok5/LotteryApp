@@ -26,11 +26,11 @@ repeat. The history of draws will be stored in the database.
     "LotteryAppDbContext": "Your connection string"
   }
 ```
--Run it with `F5`.
--The app will appear in browser after longer while
+- Run it with `F5`.
+- The app will appear in browser after longer while
 
 ![alt text](https://github.com/mrok5/LotteryApp/blob/master/lotteryApp.jpg)
 
-- click on "Let's play" , and have fun.
+- Click on "Let's play" , and have fun.
 
 
