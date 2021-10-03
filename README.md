@@ -1,6 +1,6 @@
 # LotteryApp
-The application will simulate lottery draw. It will draw 5 numbers from 1-50. The number in the draw cannot 
-repeat. The history of draws will be stored in the database. 
+The application simulates lottery draw. It draws 5 numbers from 1-50. 
+The history of draws will be stored in the database. 
 
 ## Project
 <p>Welcome to Lottery application, built with:</p>
