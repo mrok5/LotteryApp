@@ -1,11 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { Lottery } from '../services/lottery.service';
 
 @Component({
-  selector: 'app-draw-component',
-  templateUrl: './draw.component.html'
+  selector: 'app-lets-play',
+  templateUrl: './lets-play.component.html'
 })
-export class DrawComponent {
+export class DrawComponent{
 
-  public draw() {
+  constructor(public lottery: Lottery) {
   }
+
+  public drawNumbers: number[];
+
+  public draw(){
+    
+  }
+
+
 }

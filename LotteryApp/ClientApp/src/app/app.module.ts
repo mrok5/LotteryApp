@@ -11,6 +11,7 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { DrawHistoryComponent } from './draw-history/draw-history.component';
 import { Lottery } from './services/lottery.service';
+import { DrawComponent } from './lets-play/lets-play.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { Lottery } from './services/lottery.service';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    DrawHistoryComponent
+    DrawHistoryComponent,
+    DrawComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -29,6 +31,7 @@ import { Lottery } from './services/lottery.service';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
+      { path: 'lets-play', component: DrawComponent },
       { path: 'draw-history', component: DrawHistoryComponent },
     ])
   ],
