@@ -1,6 +1,9 @@
 
 export class DrawHistory {
-  id: number;
-  drawDateTime: number;
-  draw: string;
+  constructor() {
+    this.drawDateTime = new Date();
+    this.draw = new Array();
+  }
+  drawDateTime: Date;
+  draw: number[];
 }

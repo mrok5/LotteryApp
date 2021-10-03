@@ -8,6 +8,6 @@ namespace LotteryApp.Models
     public class DrawRequest
     {
         public DateTime DrawDateTime { get; set; }
-        public string Draw { get; set; }
+        public int[] Draw { get; set; }
     }
 }

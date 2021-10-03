@@ -66,8 +66,13 @@ namespace LotteryApp.Controllers
 
         [HttpPost]
         [Route("SaveDraw")]
-        public IActionResult SaveDraw([FromBody] DrawHistory drawHistory)
+        public IActionResult SaveDraw([FromBody] DrawRequest drawRequest)
         {
+            var drawHistory = new DrawHistory()
+            {
+                DrawDateTime = DateTime.Now,
+                Draw = string.Join(",",drawRequest.Draw)
+            };
 
             if (_drawRepository.SaveDraw(drawHistory))
             {

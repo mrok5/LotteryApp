@@ -9,16 +9,4 @@ export class DrawComponent{
 
   constructor(public lottery: Lottery) {
   }
-
-  public drawNumbers: number[];
-  public label = "Draw";
-
-  public draw() {
-    this.lottery.GetDrawNumbers()
-      .subscribe();
-
-    this.label = "Draw again";
-  }
-
-
 }
