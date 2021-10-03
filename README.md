@@ -27,7 +27,7 @@ The history of draws will be stored in the database.
   }
 ```
 - Run it with `F5`.
-- The app will appear in browser after longer while
+- The app will open in your default browser after 1-3 minutes.
 
 ![alt text](https://github.com/mrok5/LotteryApp/blob/master/lotteryApp.jpg)
 
