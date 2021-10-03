@@ -11,9 +11,13 @@ export class DrawComponent{
   }
 
   public drawNumbers: number[];
+  public label = "Draw";
 
-  public draw(){
-    
+  public draw() {
+    this.lottery.GetDrawNumbers()
+      .subscribe();
+
+    this.label = "Draw again";
   }
 
 
