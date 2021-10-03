@@ -18,14 +18,8 @@ namespace LotteryApp
         {
             var host = CreateHostBuilder(args).Build();
 
-            if (args.Length > 0 && args[0].ToLower() == "/seed")
-            {
-                RunSeeding(host);
-            }
-            else
-            {
-                host.Run();
-            }
+            RunSeeding(host);
+            host.Run();
         }
 
         private static void RunSeeding(IHost host)

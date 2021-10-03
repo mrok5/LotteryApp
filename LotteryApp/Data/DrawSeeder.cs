@@ -16,12 +16,20 @@ namespace LotteryApp.Data
 
         public void Seed()
         {
-            _ctx.Database.EnsureCreated();
+            try
+            {
+                _ctx.Database.EnsureCreated();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
 
             if (!_ctx.DrawHistory.Any())
             {
 
             }
+
         }
     }
 }

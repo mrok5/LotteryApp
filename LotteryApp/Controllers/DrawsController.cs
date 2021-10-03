@@ -19,16 +19,34 @@ namespace LotteryApp.Controllers
 
         [HttpGet]
         [Route("GetDraw")]
-        public DrawHistory GetDraw(int id)
+        public IActionResult GetDraw(int id)
         {
-            return _drawRepository.Get(id);
+            var result = _drawRepository.Get(id);
+
+            if(result == null)
+            {
+                return NotFound("The draw not found");
+            }
+            else
+            {
+                return Ok(result);
+            }
         }
 
         [HttpGet]
         [Route("GetDrawHistory")]
-        public IEnumerable<DrawHistory> GetDrawHistory()
+        public IActionResult GetDrawHistory()
         {
-            return _drawRepository.GetDrawHistory();
+            var result = _drawRepository.GetDrawHistory();
+
+            if (result == null)
+            {
+                return NotFound("Draw history not found");
+            }
+            else
+            {
+                return Ok(result);
+            }
         }
 
         [HttpGet]
