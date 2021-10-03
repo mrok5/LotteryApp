@@ -14,3 +14,19 @@ repeat. The history of draws will be stored in the database.
 - Visual Studio 2019 Community and above
 - .NET Core 3.1 SDK and above
 - Angular CLI 6.0.0 and above
+- SQL Server 2016 or above
+
+## Getting Started
+- Clone the repo.
+- Restore all the dependencies.
+- Open the project in Visual Studio.
+- Replace connection string with your in config.json file.
+```sh
+"ConnectionStrings": {
+    "LotteryAppDbContext": "Your connection string"
+  }
+```
+-Run it with `F5`.
+-The app will appear in browser after longer while
+
+
