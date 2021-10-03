@@ -34,6 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\lets-play\lets-play.component.ts" />
     <None Remove="ClientApp\src\app\models\DrawHistory.ts" />
     <None Remove="ClientApp\src\app\services\lottery.service.ts" />
   </ItemGroup>

@@ -3,7 +3,7 @@ import { DrawHistory } from '../models/DrawHistory';
 import { Lottery } from '../services/lottery.service';
 
 @Component({
-  selector: 'app-fetch-data',
+  selector: 'app-draw-history',
   templateUrl: './draw-history.component.html'
 })
 export class DrawHistoryComponent implements OnInit {
