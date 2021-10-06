@@ -20,7 +20,7 @@ The history of draws will be stored in the database.
 - Clone the repo.
 - Restore all the dependencies.
 - Open the project in Visual Studio.
-- Replace connection string with your in config.json file.
+- Replace connection string with yours in config.json file.
 ```sh
 "ConnectionStrings": {
     "LotteryAppDbContext": "Your connection string"
