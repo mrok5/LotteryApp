@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace LotteryApp.Data
 {
@@ -20,7 +18,7 @@ namespace LotteryApp.Data
             {
                 _ctx.Database.EnsureCreated();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
