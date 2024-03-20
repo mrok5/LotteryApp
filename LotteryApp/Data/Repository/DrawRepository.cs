@@ -1,9 +1,9 @@
-﻿using LotteryApp.Data.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using LotteryApp.Data.Entities;
 
-namespace LotteryApp.Data
+namespace LotteryApp.Data.Repository
 {
     public class DrawRepository : IDrawRepository
     {
@@ -37,7 +37,7 @@ namespace LotteryApp.Data
 
         public DrawHistory Get(int id)
         {
-            return _ctx.DrawHistory.Where(x => x.Id == id).FirstOrDefault();
+            return _ctx.DrawHistory.FirstOrDefault(x => x.Id == id);
         }
 
         public IEnumerable<DrawHistory> GetDrawHistory()

@@ -1,5 +1,5 @@
-﻿using LotteryApp.Data;
-using LotteryApp.Data.Entities;
+﻿using LotteryApp.Data.Entities;
+using LotteryApp.Data.Repository;
 using LotteryApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
