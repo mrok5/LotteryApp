@@ -37,6 +37,7 @@ namespace LotteryApp.Controllers
         {
             var result = _drawRepository.GetDrawHistory();
 
+
             if (result == null)
             {
                 return NotFound("Draw history not found");

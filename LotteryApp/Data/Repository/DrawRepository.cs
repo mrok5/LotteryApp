@@ -40,7 +40,7 @@ namespace LotteryApp.Data.Repository
             return _ctx.DrawHistory.FirstOrDefault(x => x.Id == id);
         }
 
-        public IEnumerable<DrawHistory> GetDrawHistory()
+        public IList<DrawHistory> GetDrawHistory()
         {
             return _ctx.DrawHistory.OrderBy(x => x.DrawDateTime).ToList();
         }
