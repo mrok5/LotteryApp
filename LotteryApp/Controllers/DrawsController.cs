@@ -10,46 +10,27 @@ namespace LotteryApp.Controllers
     public class DrawsController : Controller
     {
         private readonly IDrawRepository _drawRepository;
+
         public DrawsController(IDrawRepository drawRepository)
         {
             _drawRepository = drawRepository;
         }
 
-        [HttpGet]
-        [Route("GetDraw")]
+        [HttpGet("GetDraw")]
         public IActionResult GetDraw(int id)
         {
             var result = _drawRepository.Get(id);
-
-            if (result == null)
-            {
-                return NotFound("The draw not found");
-            }
-            else
-            {
-                return Ok(result);
-            }
+            return result == null ? NotFound("The draw not found") : Ok(result);
         }
 
-        [HttpGet]
-        [Route("DrawHistory")]
+        [HttpGet("DrawHistory")]
         public IActionResult GetDrawHistory()
         {
             var result = _drawRepository.GetDrawHistory();
-
-
-            if (result == null)
-            {
-                return NotFound("Draw history not found");
-            }
-            else
-            {
-                return Ok(result);
-            }
+            return result == null ? NotFound("Draw history not found") : Ok(result);
         }
 
-        [HttpGet]
-        [Route("NewDraw")]
+        [HttpGet("NewDraw")]
         public IActionResult NewDraw()
         {
             try
@@ -62,25 +43,18 @@ namespace LotteryApp.Controllers
             }
         }
 
-        [HttpPost]
-        [Route("SaveDraw")]
+        [HttpPost("SaveDraw")]
         public IActionResult SaveDraw([FromBody] DrawRequest drawRequest)
         {
-            var drawHistory = new DrawHistory()
+            var drawHistory = new DrawHistory
             {
                 DrawDateTime = DateTime.Now,
                 Draw = string.Join(",", drawRequest.Draw)
             };
 
-            if (_drawRepository.SaveDraw(drawHistory))
-            {
-                return Ok("The draw saved to database");
-            }
-            else
-            {
-                return BadRequest("Failed to save new draw");
-            }
-
+            return _drawRepository.SaveDraw(drawHistory)
+                ? Ok("The draw saved to the database")
+                : BadRequest("Failed to save the draw");
         }
     }
 }
