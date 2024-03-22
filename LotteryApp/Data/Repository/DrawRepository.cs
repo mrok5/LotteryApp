@@ -11,6 +11,7 @@ namespace LotteryApp.Data.Repository
         private const int Min = 1;
         private const int Max = 50;
         private const int DrawNumber = 5;
+
         public DrawRepository(LotteryDbContext ctx)
         {
             _ctx = ctx;
@@ -18,22 +19,18 @@ namespace LotteryApp.Data.Repository
 
         public int[] DrawMethod()
         {
-            var drawArray = new int[DrawNumber];
+            var drawArray = new HashSet<int>();
+            var random = new Random();
 
-            for (var i = 0; i < DrawNumber; i++)
+            while (drawArray.Count < DrawNumber)
             {
-                var draw = new Random().Next(Min, Max);
-
-                while (drawArray.Contains(draw))
-                {
-                    draw = new Random().Next(Min, Max);
-                }
-
-                drawArray[i] = draw;
+                var draw = random.Next(Min, Max);
+                drawArray.Add(draw);
             }
 
-            return drawArray;
+            return drawArray.ToArray();
         }
+
 
         public DrawHistory Get(int id)
         {
@@ -52,9 +49,9 @@ namespace LotteryApp.Data.Repository
                 _ctx.DrawHistory.Add(draw);
                 return _ctx.SaveChanges() > 0;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                return false;
             }
         }
     }
